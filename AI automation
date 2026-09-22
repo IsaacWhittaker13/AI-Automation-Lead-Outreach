@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Automation Services for Your Business</title>
+  <style>
+    :root {
+      --primary: #1a365d;
+      --accent: #2b6cb0;
+      --light: #ebf8ff;
+      --success: #276749;
+      --border: #e2e8f0;
+      --text: #2d3748;
+      --muted: #718096;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: #f7fafc;
+      padding: 20px;
+    }
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      padding: 40px 32px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 1.85rem;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    header p {
+      font-size: 1.05rem;
+      opacity: 0.95;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .content { padding: 32px; }
+    .intro {
+      background: var(--light);
+      border-left: 4px solid var(--accent);
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.98rem;
+    }
+    h2 {
+      font-size: 1.35rem;
+      color: var(--primary);
+      margin: 36px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--border);
+    }
+    h2:first-of-type { margin-top: 0; }
+    .service-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 16px;
+      transition: box-shadow 0.2s;
+    }
+    .service-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+    .service-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .service-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .result-badge {
+      background: #c6f6d5;
+      color: var(--success);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .service-desc {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .check-options {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 0.92rem;
+    }
+    .check-options label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .check-options input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent);
+    }
+    .tier-section {
+      display: grid;
+      gap: 20px;
+      margin-top: 12px;
+    }
+    @media (min-width: 700px) {
+      .tier-section { grid-template-columns: repeat(3, 1fr); }
+    }
+    .tier-card {
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 20px;
+      text-align: center;
+      position: relative;
+    }
+    .tier-card.popular {
+      border-color: var(--accent);
+      background: #f0f7ff;
+    }
+    .tier-card.popular::before {
+      content: "Most Popular";
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 12px;
+      border-radius: 12px;
+    }
+    .tier-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+    .tier-price {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .tier-price span {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--muted);
+    }
+    .tier-list {
+      text-align: left;
+      margin: 16px 0;
+      font-size: 0.9rem;
+      list-style: none;
+    }
+    .tier-list li {
+      padding: 5px 0;
+      padding-left: 22px;
+      position: relative;
+    }
+    .tier-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--success);
+      font-weight: 700;
+    }
+    .notes {
+      background: #fffaf0;
+      border: 1px solid #feebc8;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-top: 32px;
+      font-size: 0.92rem;
+      color: #744210;
+    }
+    .cta {
+      text-align: center;
+      margin-top: 36px;
+      padding: 28px;
+      background: var(--light);
+      border-radius: 10px;
+    }
+    .cta p {
+      margin-bottom: 12px;
+      font-size: 1.05rem;
+    }
+    .cta strong { color: var(--primary); }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+    @media print {
+      body { background: white; padding: 0; }
+      .container { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>AI Automation Services</h1>
+      <p>Simple systems that stop lost leads, empty chairs, and admin headaches — without you learning any new tech.</p>
+    </header>
+
+    <div class="content">
+      <div class="intro">
+        <strong>How to use this page:</strong><br>
+        1. Fill in your details below first.<br>
+        2. Tick what you already have, what you already have but isn’t AI automated yet, and what you want automated.<br>
+        3. Add any other ideas at the bottom and submit. I will review it and generate the best fit for you.<br>
+        No pressure — this just clarifies if you even need the help in the first place.
+      </div>
+
+      <!-- THE FORM STARTS HERE -->
+      <form action="https://formsubmit.co/isaacwhitt13@gmail.com" method="POST" id="main-form" onsubmit="return prepareForm()">
+        <!-- Hidden FormSubmit settings -->
+        <input type="hidden" name="_subject" value="AI Automation – New Best Fit Request">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://formsubmit.co/thank-you">
+        <input type="hidden" name="Services Selected" id="services-selected" value="">
+
+      <!-- CLIENT DETAILS AT TOP -->
+      <div style="background: #f0f7ff; border: 1px solid #bee3f8; border-radius: 10px; padding: 24px; margin-bottom: 32px;">
+        <h2 style="margin-top: 0; border-bottom: none; padding-bottom: 0; margin-bottom: 16px;">Your Details</h2>
+        <div style="display: grid; gap: 14px;">
+          <div>
+            <label style="display: block; font-weight: 600; margin-bottom: 4px; font-size: 0.92rem;">Your Name *</label>
+            <input type="text" name="Name" required placeholder="e.g. Sarah Johnson" 
+              style="width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.95rem;">
+          </div>
+          <div>
+            <label style="display: block; font-weight: 600; margin-bottom: 4px; font-size: 0.92rem;">Business Name *</label>
+            <input type="text" name="Business" required placeholder="e.g. Coastal Cuts Salon" 
+              style="width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.95rem;">
+          </div>
+          <div>
+            <label style="display: block; font-weight: 600; margin-bottom: 4px; font-size: 0.92rem;">Services you provide / short bio</label>
+            <textarea name="Business Bio / Services" rows="2" placeholder="e.g. Hair salon with 4 stylists. Cuts, colour, balayage, bridal." 
+              style="width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.95rem; resize: vertical;"></textarea>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            <div>
+              <label style="display: block; font-weight: 600; margin-bottom: 4px; font-size: 0.92rem;">Email *</label>
+              <input type="email" name="Email" required placeholder="you@business.com" 
+                style="width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.95rem;">
+            </div>
+            <div>
+              <label style="display: block; font-weight: 600; margin-bottom: 4px; font-size: 0.92rem;">Phone / WhatsApp</label>
+              <input type="tel" name="Phone" placeholder="04xx xxx xxx" 
+                style="width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.95rem;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2>Individual Services</h2>
+      <p style="margin-bottom: 20px; color: var(--muted); font-size: 0.95rem;">
+        These are the tasks small businesses praise most. Results shown are typical ranges seen across salons, clinics, contractors and similar service businesses.
+      </p>
+
+      <!-- Service 1 -->
+      <div class="service-card">
+        <div class="service-header">
+          <div class="service-title">1. Instant Lead & Inquiry Response + Booking</div>
+          <div class="result-badge">+30–60% leads captured</div>
+        </div>
+        <div class="service-desc">
+          Missed calls, website forms and after-hours messages get an immediate reply + booking link. 
+          Data shows that after automation, businesses typically capture 30–60% more leads and turn more of them into actual appointments (results often visible within the first 30–90 days).
+        </div>
+        <div class="check-options">
+          <label><input type="checkbox"> Already have this</label>
+          <label><input type="checkbox"> Already have this but not AI automated</label>
+          <label><input type="checkbox"> Want this automated</label>
+        </div>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="service-card">
+        <div class="service-header">
+          <div class="service-title">2. Appointment Reminders + No-Show Reduction + Rebooking</div>
+          <div class="result-badge">40–70% fewer no-shows</div>
+        </div>
+        <div class="service-desc">
+          Automatic SMS/email reminders (usually 24h + 2h before) with easy confirm or reschedule, plus a gentle rebooking prompt after the visit. 
+          Data shows that after automation, businesses typically see 40–70% fewer no-shows, with the biggest drop usually appearing within the first 30–60 days.
+        </div>
+        <div class="check-options">
+          <label><input type="checkbox"> Already have this</label>
+          <label><input type="checkbox"> Already have this but not AI automated</label>
+          <label><input type="checkbox"> Want this automated</label>
+        </div>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="service-card">
+        <div class="service-header">
+          <div class="service-title">3. Review Request Sequences</div>
+          <div class="result-badge">3–5× more Google reviews</div>
+        </div>
+        <div class="service-desc">
+          Automatic polite request sent shortly after the appointment (when clients are happiest). 
+          Data shows that after automation, businesses typically receive 3–5× more Google reviews, which also helps local rankings — without staff having to remember to ask.
+        </div>
+        <div class="check-options">
+          <label><input type="checkbox"> Already have this</label>
+          <label><input type="checkbox"> Already have this but not AI automated</label>
+          <label><input type="checkbox"> Want this automated</label>
+        </div>
+      </div>
+
+      <!-- Service 4 -->
+      <div class="service-card">
+        <div class="service-header">
+          <div class="service-title">4. Invoice & Payment Follow-up</div>
+          <div class="result-badge">Faster payments</div>
+        </div>
+        <div class="service-desc">
+          Job marked complete → invoice sent automatically → polite payment reminders if unpaid. 
+          Data shows that after automation, businesses typically get paid faster and spend far less time chasing late invoices, improving cash flow (especially useful for contractors and service businesses).
+        </div>
+        <div class="check-options">
+          <label><input type="checkbox"> Already have this</label>
+          <label><input type="checkbox"> Already have this but not AI automated</label>
+          <label><input type="checkbox"> Want this automated</label>
+        </div>
+      </div>
+
+      <!-- Service 5 -->
+      <div class="service-card">
+        <div class="service-header">
+          <div class="service-title">5. Basic FAQ / Support Handling</div>
+          <div class="result-badge">50–70% of queries handled auto</div>
+        </div>
+        <div class="service-desc">
+          Simple questions about hours, pricing, services or booking get answered 24/7. Complex or sensitive issues still go to a human. 
+          Data shows that after automation, 50–70% of simple queries are typically handled automatically, freeing staff from repeating the same answers.
+        </div>
+        <div class="check-options">
+          <label><input type="checkbox"> Already have this</label>
+          <label><input type="checkbox"> Already have this but not AI automated</label>
+          <label><input type="checkbox"> Want this automated</label>
+        </div>
+      </div>
+
+      <!-- Service 6 -->
+      <div class="service-card">
+        <div class="service-header">
+          <div class="service-title">6. Simple Admin & Reporting</div>
+          <div class="result-badge">10–20 hrs saved / week</div>
+        </div>
+        <div class="service-desc">
+          Weekly summary of jobs completed, outstanding invoices, no-show rate, or other key numbers emailed to you. 
+          Data shows that after automation, businesses typically save 10–20 hours per week on admin and reporting — stopping the need to dig through systems or spreadsheets.
+        </div>
+        <div class="check-options">
+          <label><input type="checkbox"> Already have this</label>
+          <label><input type="checkbox"> Already have this but not AI automated</label>
+          <label><input type="checkbox"> Want this automated</label>
+        </div>
+      </div>
+
+      <h2>Ready-Made Packages (Tiers)</h2>
+      <p style="margin-bottom: 16px; color: var(--muted); font-size: 0.95rem;">
+        Most clients start with one of these. You can always add more later.
+      </p>
+
+      <div class="tier-section">
+        <!-- Tier 1 -->
+        <div class="tier-card">
+          <div class="tier-name">Minimum: Core</div>
+          <ul class="tier-list">
+            <li>Instant lead response + booking</li>
+            <li>Appointment reminders</li>
+            <li>No-show reduction</li>
+            <li>Basic rebooking prompts</li>
+          </ul>
+          <div class="check-options" style="justify-content: center;">
+            <label><input type="checkbox"> Want this package</label>
+          </div>
+        </div>
+
+        <!-- Tier 2 -->
+        <div class="tier-card popular">
+          <div class="tier-name">Elite: Full Front Desk</div>
+          <ul class="tier-list">
+            <li>Everything in Minimum: Core</li>
+            <li>Review request sequences</li>
+            <li>Invoice + payment follow-up</li>
+            <li>Weekly summary report</li>
+          </ul>
+          <div class="check-options" style="justify-content: center;">
+            <label><input type="checkbox"> Want this package</label>
+          </div>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="tier-card">
+          <div class="tier-name">Premium Optimisation</div>
+          <ul class="tier-list">
+            <li>Everything in Elite: Full Front Desk</li>
+            <li>FAQ / support handling</li>
+            <li>Ongoing monitoring & tweaks</li>
+            <li>Priority support</li>
+          </ul>
+          <div class="check-options" style="justify-content: center;">
+            <label><input type="checkbox"> Want this package</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="notes">
+        <strong>Important notes:</strong><br>
+        • The results shown (“Data shows that after automation…”) are typical ranges reported by similar small businesses (salons, clinics, contractors and service businesses). Your exact numbers will depend on your current processes and how consistently the system is used.<br>
+        • Pricing is discussed on a follow-up call once we know what you need — no costs are shown here on purpose.<br>
+        • You don’t need to learn any software — I handle the technical side. You just keep running your business.
+      </div>
+
+      <!-- OTHER SUGGESTIONS + SUBMIT -->
+      <div class="cta" style="text-align: left;">
+        <p style="text-align: center; margin-bottom: 16px;"><strong>Anything else?</strong></p>
+        <p style="text-align: center; margin-bottom: 20px; font-size: 0.95rem; color: var(--muted);">
+          Suggest any other tasks or problems you’d like me to look at automating.
+        </p>
+
+        <div style="margin-bottom: 24px;">
+          <textarea name="Other ideas / requests" rows="3" placeholder="e.g. Staff rostering, stock ordering, client follow-up after 6 months, social media posting..." 
+            style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.95rem; resize: vertical;"></textarea>
+        </div>
+
+        <div style="text-align: center;">
+          <button type="submit" 
+            style="background: var(--accent); color: white; border: none; padding: 14px 32px; font-size: 1rem; font-weight: 600; border-radius: 8px; cursor: pointer;">
+            Submit – Get My Best Fit Recommendation
+          </button>
+          <p style="margin-top: 12px; font-size: 0.85rem; color: var(--muted);">
+            You’ll see a short thank-you page. I will receive everything automatically and get back to you.
+          </p>
+        </div>
+      </div>
+
+      </form>
+      <!-- FORM ENDS HERE -->
+
+    </div>
+
+    <footer>
+      AI Automation for local service businesses · Clear results · No tech headaches for you
+    </footer>
+  </div>
+
+  <script>
+    function prepareForm() {
+      // Collect all checked services & packages into one field
+      const checks = [];
+      document.querySelectorAll('.service-card, .tier-card').forEach(card => {
+        const title = card.querySelector('.service-title, .tier-name')?.innerText || '';
+        const selected = [];
+        card.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+          selected.push(cb.parentElement.innerText.trim());
+        });
+        if (selected.length > 0) {
+          checks.push(title + ': ' + selected.join(', '));
+        }
+      });
+
+      document.getElementById('services-selected').value = checks.length 
+        ? checks.join('\n') 
+        : 'None ticked';
+
+      return true; // allow the form to submit
+    }
+  </script>
+</body>
+</html>
